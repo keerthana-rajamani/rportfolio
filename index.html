@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keerthana R | Mass Pakka Fairy Tale & Rapunzel Portfolio</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --sundrop-gold: #ffd13b;
+      --sundrop-glow: rgba(255, 209, 59, 0.45);
+      --corona-purple: #481a78;
+      --corona-deep: #160829;
+      --corona-midnight: #0b0416;
+      --pascal-emerald: #10b981;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--corona-midnight);
+      color: #f3e8ff;
+      overflow-x: hidden;
+      selection-background-color: #f59e0b;
+      selection-color: #1a0826;
+    }
+
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
+    }
+
+    .font-cinzel-dec {
+      font-family: 'Cinzel Decorative', cursive, serif;
+    }
+
+    /* Magical Golden Shimmer */
+    .golden-shimmer-text {
+      background: linear-gradient(135deg, #fff7c2 0%, #ffd043 25%, #f59e0b 50%, #fff099 75%, #d97706 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    /* Floating Lanterns Glow */
+    .glow-gold {
+      box-shadow: 0 0 25px rgba(255, 208, 67, 0.35), 0 0 50px rgba(245, 158, 11, 0.2);
+    }
+    .glow-purple {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(167, 139, 250, 0.15);
+    }
+    .glow-lantern {
+      filter: drop-shadow(0 0 12px rgba(255, 191, 36, 0.85)) drop-shadow(0 0 25px rgba(245, 158, 11, 0.45));
+    }
+
+    /* Starry background canvas */
+    #sky-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Custom Glassmorphism */
+    .glass-card {
+      background: rgba(27, 12, 46, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 215, 0, 0.18);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 215, 0, 0.4);
+      box-shadow: 0 12px 35px -8px rgba(255, 209, 59, 0.25), 0 0 20px rgba(147, 51, 234, 0.2);
+    }
+
+    /* Golden Braided Scroll Bar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f051d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f59e0b, #d97706, #9333ea);
+      border-radius: 9999px;
+      border: 2px solid #0f051d;
+    }
+
+    /* Golden Braid Vine Line */
+    .braid-tracker {
+      background: repeating-linear-gradient(
+        45deg,
+        #f59e0b,
+        #f59e0b 8px,
+        #fbbf24 8px,
+        #fbbf24 16px,
+        #d97706 16px,
+        #d97706 24px
+      );
+    }
+
+    /* Pulse Glow */
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(255, 209, 59, 0.7));
+        transform: scale(1);
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(255, 209, 59, 0.95)) drop-shadow(0 0 35px rgba(234, 88, 12, 0.6));
+        transform: scale(1.02);
+      }
+    }
+    .animate-pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+
+    /* Float subtle */
+    @keyframes floatGentle {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+    .animate-float {
+      animation: floatGentle 4.5s ease-in-out infinite;
+    }
+
+    @keyframes floatGentleDelayed {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(-1.5deg); }
+    }
+    .animate-float-delayed {
+      animation: floatGentleDelayed 5.5s ease-in-out infinite 1.5s;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen text-slate-100 selection:bg-amber-400 selection:text-purple-950">
+
+  <!-- Interactive Night Sky & Drifting Lanterns Canvas -->
+  <canvas id="sky-canvas"></canvas>
+
+  <!-- Sound Toggle & Pascal Companion Floating Bar -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 pointer-events-auto">
+    <!-- Pascal Mood Switcher Pill -->
+    <div id="pascal-widget" class="group flex items-center gap-2 px-3.5 py-2 rounded-full glass-card border border-amber-400/30 hover:border-amber-400 shadow-xl cursor-pointer transition-all duration-300 transform hover:scale-105" title="Click Pascal to change royal ambiance!">
+      <svg class="w-6 h-6 text-emerald-400 transition-transform group-hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2a9 9 0 0 0-9 9c0 4.1 2.8 7.6 6.7 8.6.4.1.6-.2.6-.4v-1.5c-2.7.6-3.3-1.3-3.3-1.3-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.4-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.5 4.9.4.3.7.9.7 1.9v2.8c0 .2.2.5.6.4A9 9 0 0 0 12 2z"/>
+      </svg>
+      <span class="text-xs font-semibold text-amber-200 hidden sm:inline">Pascal's Aura</span>
+      <span id="pascal-mood-text" class="text-xs bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-400/30">Sundrop</span>
+    </div>
+
+    <!-- Audio Atmosphere Synthesizer -->
+    <button id="audio-toggle-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-full glass-card border border-amber-400/40 hover:border-amber-400 shadow-xl text-amber-300 hover:text-amber-100 transition-all duration-300 transform hover:scale-105" title="Toggle Magical Fairy Tale Audio Synth">
+      <span id="audio-icon" class="text-base">🎵</span>
+      <span id="audio-label" class="text-xs font-semibold">Play Magic Harp</span>
+    </button>
+
+    <!-- Frying Pan Easter Egg -->
+    <button id="pan-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-full glass-card border border-amber-400/40 hover:border-amber-400 shadow-xl text-amber-300 hover:text-amber-100 transition-all duration-300 transform hover:scale-105" title="Rapunzel's Frying Pan (+100 Bug Defense)">
+      <span class="text-base">🍳</span>
+      <span class="text-xs font-semibold hidden sm:inline">Frying Pan</span>
+    </button>
+  </div>
+
+  <!-- Corona Royal Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto glass-card rounded-2xl px-5 py-3 flex items-center justify-between shadow-2xl border border-amber-400/25">
+      <!-- Royal Crest Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <!-- Corona Sun Emblem SVG -->
+        <div class="relative w-10 h-10 flex items-center justify-center">
+          <svg class="w-10 h-10 text-amber-400 animate-pulse-glow" viewBox="0 0 100 100" fill="currentColor">
+            <!-- Corona Royal Sun Rays -->
+            <circle cx="50" cy="50" r="18" fill="#fbbf24"/>
+            <path d="M50 8 L54 26 L50 22 L46 26 Z" fill="#f59e0b"/>
+            <path d="M50 92 L54 74 L50 78 L46 74 Z" fill="#f59e0b"/>
+            <path d="M8 50 L26 46 L22 50 L26 54 Z" fill="#f59e0b"/>
+            <path d="M92 50 L74 46 L78 50 L74 54 Z" fill="#f59e0b"/>
+            <path d="M20 20 L35 32 L31 35 L32 31 Z" fill="#fbbf24"/>
+            <path d="M80 80 L65 68 L69 65 L68 69 Z" fill="#fbbf24"/>
+            <path d="M80 20 L68 35 L65 31 L69 32 Z" fill="#fbbf24"/>
+            <path d="M20 80 L32 65 L35 69 L31 68 Z" fill="#fbbf24"/>
+          </svg>
+          <span class="absolute font-cinzel-dec font-black text-xs text-purple-950">KR</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-cinzel font-bold text-base sm:text-lg tracking-wider golden-shimmer-text">KEERTHANA R</span>
+          <span class="text-[11px] text-amber-200/70 tracking-widest uppercase">Engineer of the Kingdom</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#tower" class="text-purple-200 hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <span>🏰</span> The Tower
+        </a>
+        <a href="#grimoire" class="text-purple-200 hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <span>📜</span> Grimoire (Skills)
+        </a>
+        <a href="#quests" class="text-purple-200 hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <span>⚔️</span> Quests (Projects)
+        </a>
+        <a href="#chronicles" class="text-purple-200 hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <span>👑</span> Chronicles
+        </a>
+        <a href="#lanterns" class="text-purple-200 hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <span>🏮</span> Lantern Shrine
+        </a>
+      </nav>
+
+      <!-- Royal Action Button -->
+      <div class="flex items-center gap-3">
+        <!-- Direct GitHub rportfolio button -->
+        <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-xl glass-card border border-amber-400/40 text-amber-300 hover:text-white text-xs font-bold hover:scale-105 transition-all" title="View Repository on GitHub">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span class="tracking-wide">rportfolio</span>
+        </a>
+        <a href="#scroll" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-purple-950 font-bold text-xs tracking-wider uppercase shadow-lg shadow-amber-500/25 hover:shadow-amber-400/40 hover:scale-105 transition-all duration-300">
+          <span>💌</span> Dispatch Scroll
+        </a>
+        <!-- Print / PDF Resume Trigger -->
+        <button onclick="window.print()" class="p-2 rounded-xl bg-purple-900/60 border border-amber-400/30 text-amber-300 hover:text-amber-100 hover:bg-purple-800/80 transition-all" title="Print/Export Royal Charter">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container with Parallax & Hair Braid Thread -->
+  <main class="relative z-10 pt-28 pb-20">
+
+    <!-- HERO SECTION: The Tower of Innovation -->
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 flex flex-col items-center text-center">
+      
+      <!-- Fairy Tale Floating Crest & Lantern Aura -->
+      <div class="relative mb-6">
+        <div class="absolute -inset-4 bg-gradient-to-r from-amber-500/20 via-purple-600/30 to-amber-500/20 rounded-full blur-2xl animate-pulse"></div>
+        <div class="relative inline-flex items-center gap-2.5 px-5 py-2 rounded-full glass-card border border-amber-400/40 shadow-xl">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span class="text-xs uppercase tracking-widest font-bold text-amber-300">
+            ☀️ Tangled In Code • B.Tech IT '28 @ SKCET Coimbatore
+          </span>
+        </div>
+      </div>
+
+      <!-- Mass Headline with Cinema Grandeur -->
+      <h1 class="font-cinzel-dec font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-none mb-6">
+        <span class="block text-slate-100">I Am</span>
+        <span class="golden-shimmer-text block mt-2 drop-shadow-[0_10px_25px_rgba(255,209,59,0.4)]">KEERTHANA R</span>
+      </h1>
+
+      <p class="font-cinzel text-lg sm:text-2xl text-amber-200/90 max-w-3xl font-medium tracking-wide mb-4">
+        Aspiring Software Engineer & Full-Stack Architect
+      </p>
+
+      <p class="text-slate-300 max-w-2xl text-sm sm:text-base leading-relaxed mb-10">
+        Weaving golden threads of <span class="text-amber-300 font-semibold">Java, Spring Boot, React & AI Systems</span>. 
+        Descending from the algorithmic tower to architect rock-solid enterprise backends and spellbinding digital realities.
+      </p>
+
+      <!-- Mass Pakka Impact Badges (The 4 Pillars of Kingdom Power) -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl mb-12">
+        <div class="glass-card rounded-2xl p-4 border border-amber-400/20 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 font-cinzel font-black text-3xl sm:text-4xl">Rank 4</div>
+          <div class="text-xs text-amber-200/80 font-medium mt-1">IIT Patna AIbot Challenge</div>
+          <div class="text-[11px] text-purple-300/70">Critical Mass AI</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 border border-amber-400/20 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 font-cinzel font-black text-3xl sm:text-4xl">95.3%</div>
+          <div class="text-xs text-amber-200/80 font-medium mt-1">Intake Time Slashed</div>
+          <div class="text-[11px] text-purple-300/70">CareSyncAI (45 → 2.1m)</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 border border-amber-400/20 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 font-cinzel font-black text-3xl sm:text-4xl">8.42</div>
+          <div class="text-xs text-amber-200/80 font-medium mt-1">SKCET CGPA</div>
+          <div class="text-[11px] text-purple-300/70">10th: 96.2% | 11th: 95%</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-4 border border-amber-400/20 hover:border-amber-400/60 transition-all duration-300 transform hover:-translate-y-1">
+          <div class="text-amber-400 font-cinzel font-black text-3xl sm:text-4xl">5 Roles</div>
+          <div class="text-xs text-amber-200/80 font-medium mt-1">JWT Security Matrix</div>
+          <div class="text-[11px] text-purple-300/70">Finance Platform</div>
+        </div>
+      </div>
+
+      <!-- Hero Action Deck -->
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#quests" class="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-purple-950 font-cinzel font-black text-sm tracking-wider uppercase shadow-2xl shadow-amber-500/30 hover:shadow-amber-400/50 hover:scale-105 transition-all duration-300 flex items-center gap-3">
+          <span>⚔️ Unveil Royal Inventions</span>
+          <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+
+        <button onclick="openLanternModal()" class="px-7 py-4 rounded-2xl glass-card border border-amber-400/40 hover:border-amber-400 text-amber-200 hover:text-white font-cinzel font-bold text-sm tracking-wider uppercase hover:scale-105 transition-all duration-300 flex items-center gap-2.5">
+          <span class="text-lg">🏮</span> Light A Floating Lantern
+        </button>
+
+        <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-2xl glass-card border border-amber-400/40 hover:border-amber-400 text-amber-200 hover:text-white text-sm font-semibold transition-all duration-300 flex items-center gap-2" title="GitHub Repository">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <span>GitHub / rportfolio</span>
+        </a>
+
+        <a href="#scroll" class="px-6 py-4 rounded-2xl bg-purple-950/70 border border-purple-500/40 hover:border-amber-400/70 text-purple-200 hover:text-amber-300 text-sm font-semibold transition-all duration-300 flex items-center gap-2">
+          <span>📜</span> Royal Dispatch
+        </a>
+      </div>
+
+      <!-- Rapunzel Tower Silhouette & Golden Braid Visual Anchor -->
+      <div class="relative mt-16 w-full max-w-xl flex flex-col items-center">
+        <!-- Floating Lantern Beacon -->
+        <div class="animate-float">
+          <svg class="w-16 h-20 text-amber-400 glow-lantern" viewBox="0 0 64 80" fill="currentColor">
+            <path d="M16 12 Q32 4 48 12 L54 60 Q32 72 10 60 Z" fill="#f59e0b" opacity="0.9"/>
+            <path d="M20 16 Q32 10 44 16 L48 56 Q32 66 16 56 Z" fill="#fef08a"/>
+            <!-- Inner Sun Flame -->
+            <circle cx="32" cy="36" r="10" fill="#fff" opacity="0.95"/>
+            <circle cx="32" cy="36" r="18" fill="#fbbf24" opacity="0.5"/>
+            <!-- Tassel -->
+            <path d="M30 68 L34 68 L32 78 Z" fill="#d97706"/>
+          </svg>
+        </div>
+        <p class="text-xs font-cinzel tracking-widest text-amber-300/80 mt-2">"Now that I see you, the world has somehow shifted..."</p>
+      </div>
+
+    </section>
+
+    <!-- SECTION 1: THE TOWER & ROYAL PHILOSOPHY -->
+    <section id="tower" class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-amber-400/25 relative overflow-hidden">
+        
+        <!-- Background Corona Crest Watermark -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 opacity-5 pointer-events-none">
+          <svg viewBox="0 0 100 100" fill="currentColor" class="text-amber-300"><circle cx="50" cy="50" r="45"/></svg>
+        </div>
+
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300 text-sm">
+            🏰
+          </div>
+          <span class="text-xs uppercase tracking-widest font-bold text-amber-400">Chapter I • The Tower Origin</span>
+        </div>
+
+        <h2 class="font-cinzel font-black text-3xl sm:text-4xl text-slate-100 mb-6">
+          Engineering With Passion, Grit & <span class="golden-shimmer-text">Unshakable Architecture</span>
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>
+              Second-year <strong class="text-amber-300">B.Tech Information Technology</strong> scholar at 
+              <span class="text-purple-200 font-semibold">Sri Krishna College of Engineering and Technology (SKCET)</span>, Coimbatore, 
+              maintaining an <strong class="text-amber-300">8.42 CGPA</strong> with an exceptional secondary academic track record (10th: 96.2%, 11th: 95%).
+            </p>
+            <p>
+              Like Rapunzel gazing out from her high tower with infinite curiosity and relentless creative fire, I don't just write code—I design resilient digital kingdoms. My craftsmanship bridges rigorous computer science fundamentals (Object-Oriented Design, Algorithm Optimization, Clean Architecture) with the fast-evolving frontiers of modern AI Agents, Next.js, and Enterprise Spring Boot.
+            </p>
+            <p class="text-amber-200/90 font-medium">
+              "Seeking engineering roles that demand ruthless technical problem-solving, real-world societal impact, and architectural elegance under senior engineering mentorship."
+            </p>
+          </div>
+
+          <!-- Academic & Certified Crests Card -->
+          <div class="lg:col-span-5 space-y-3">
+            <div class="p-4 rounded-2xl bg-purple-950/60 border border-amber-400/20 flex items-start gap-4">
+              <div class="text-2xl mt-0.5">🎓</div>
+              <div>
+                <div class="text-sm font-bold text-slate-100">Sri Krishna College of Engg & Tech</div>
+                <div class="text-xs text-amber-300">B.Tech Information Technology (2024 - 2028)</div>
+                <div class="text-xs text-slate-400 mt-1">Coimbatore, Tamil Nadu • CGPA: 8.42</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-950/60 border border-amber-400/20 flex items-start gap-4">
+              <div class="text-2xl mt-0.5">📜</div>
+              <div>
+                <div class="text-sm font-bold text-slate-100">Rashtrabhasha Pandit Certified</div>
+                <div class="text-xs text-amber-300">Advanced Hindi Mastery & Linguistic Agility</div>
+                <div class="text-xs text-slate-400 mt-1">Empowering multilingual hospital triage systems (CareSyncAI)</div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-purple-950/60 border border-amber-400/20 flex items-start gap-4">
+              <div class="text-2xl mt-0.5">🌿</div>
+              <div>
+                <div class="text-sm font-bold text-slate-100">IN-UN GC-26 Certified Advocate</div>
+                <div class="text-xs text-amber-300">Child Environmental Rights & Ethical Tech</div>
+                <div class="text-xs text-slate-400 mt-1">Global civic workshops on sustainable development</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: THE SUNDROP SKILL ALTAR (TECHNICAL GRIMOIRE) -->
+    <section id="grimoire" class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3">
+          🌸 Chapter II • The Sundrop Grimoire
+        </div>
+        <h2 class="font-cinzel font-black text-3xl sm:text-5xl text-slate-100">
+          Spells, Runes & <span class="golden-shimmer-text">Architectural Mastery</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3">
+          "Flower gleam and glow, let your power shine..." Filter through Keerthana's battle-tested engineering arsenal.
+        </p>
+
+        <!-- Interactive Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="skill-filter-bar">
+          <button onclick="filterSkills('all')" class="skill-tab active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-amber-400 text-purple-950 shadow-lg shadow-amber-400/20">All Spells</button>
+          <button onclick="filterSkills('backend')" class="skill-tab px-4 py-2 rounded-xl text-xs font-bold transition-all glass-card text-purple-200 hover:text-amber-300">Backend & Java</button>
+          <button onclick="filterSkills('frontend')" class="skill-tab px-4 py-2 rounded-xl text-xs font-bold transition-all glass-card text-purple-200 hover:text-amber-300">Full-Stack & Next.js</button>
+          <button onclick="filterSkills('core')" class="skill-tab px-4 py-2 rounded-xl text-xs font-bold transition-all glass-card text-purple-200 hover:text-amber-300">Core CS & DSA</button>
+          <button onclick="filterSkills('certs')" class="skill-tab px-4 py-2 rounded-xl text-xs font-bold transition-all glass-card text-purple-200 hover:text-amber-300">Certifications</button>
+        </div>
+      </div>
+
+      <!-- Skills Grid with Interactive Glow Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="skills-grid">
+        
+        <!-- Java -->
+        <div class="skill-card backend core glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">☕</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40">Core Language</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Java 17 / SE</h3>
+          <p class="text-xs text-slate-300 mt-1">OOP, Multi-threading, Streams, Collections, Enterprise Design Patterns.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Infosys Java Certified</span>
+            <span class="font-mono text-amber-400 font-bold">Primary Force</span>
+          </div>
+        </div>
+
+        <!-- Spring Boot 3 -->
+        <div class="skill-card backend glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🍃</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 border border-emerald-400/40">Framework</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Spring Boot 3 & Security</h3>
+          <p class="text-xs text-slate-300 mt-1">JWT Auth, Role-Based Access Control, RESTful API architecture, Spring Data JPA.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>5 Roles RBAC Engine</span>
+            <span class="font-mono text-amber-400 font-bold">Enterprise</span>
+          </div>
+        </div>
+
+        <!-- Data Structures & Algorithms -->
+        <div class="skill-card core glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">⚡</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-purple-400/20 text-purple-300 border border-purple-400/40">Core CS</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Data Structures & Algo</h3>
+          <p class="text-xs text-slate-300 mt-1">Trees, Graphs, Dynamic Programming, Complexity Analysis on LeetCode & Contests.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>LeetCode Solver</span>
+            <span class="font-mono text-amber-400 font-bold">Optimized</span>
+          </div>
+        </div>
+
+        <!-- React 18 & Next.js 14 -->
+        <div class="skill-card frontend glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">⚛️</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-cyan-400/20 text-cyan-300 border border-cyan-400/40">Frontend</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Next.js 14 & React 18</h3>
+          <p class="text-xs text-slate-300 mt-1">App Router, TypeScript, Tailwind CSS, SSR, Responsive Glassmorphic Interfaces.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>TypeScript + Zod</span>
+            <span class="font-mono text-amber-400 font-bold">Modern Web</span>
+          </div>
+        </div>
+
+        <!-- SQL & Databases -->
+        <div class="skill-card backend core glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🗄️</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-blue-400/20 text-blue-300 border border-blue-400/40">Storage</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">PostgreSQL & SQL</h3>
+          <p class="text-xs text-slate-300 mt-1">Relational schema design, indexes, transactional integrity, SQLite, Infosys DBMS certified.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Infosys DBMS Certified</span>
+            <span class="font-mono text-amber-400 font-bold">ACID Compliant</span>
+          </div>
+        </div>
+
+        <!-- Docker, Git & DevOps -->
+        <div class="skill-card backend glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🐳</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40">DevOps</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Docker & CI/CD Pipelines</h3>
+          <p class="text-xs text-slate-300 mt-1">Containerization with Docker Compose, Git version control, Postman API testing, Agile workflows.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Postman + Git</span>
+            <span class="font-mono text-amber-400 font-bold">Automated</span>
+          </div>
+        </div>
+
+        <!-- Cert: AWS Cloud Innovator -->
+        <div class="skill-card certs glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">☁️</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-orange-400/20 text-orange-300 border border-orange-400/40">Credential</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">AWS Cloud Innovator</h3>
+          <p class="text-xs text-slate-300 mt-1">Cloud infrastructure fundamentals, serverless computing, resilient architectural models.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Amazon Web Services</span>
+            <span class="font-mono text-amber-400 font-bold">Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert: Cisco Networking Basics -->
+        <div class="skill-card certs glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🌐</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-indigo-400/20 text-indigo-300 border border-indigo-400/40">Credential</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Cisco Networking Basics</h3>
+          <p class="text-xs text-slate-300 mt-1">TCP/IP, routing, subnets, packet flow, secure sockets, network protocols.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Cisco Academy</span>
+            <span class="font-mono text-amber-400 font-bold">Verified</span>
+          </div>
+        </div>
+
+        <!-- Cert: Infosys Springboard OOAD, Java, DBMS -->
+        <div class="skill-card certs backend glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/70 transition-all duration-300 group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">🏆</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40">Triple Crest</span>
+          </div>
+          <h3 class="font-cinzel font-bold text-lg text-slate-100 group-hover:text-amber-300 transition-colors">Infosys Springboard Triple</h3>
+          <p class="text-xs text-slate-300 mt-1">Object-Oriented Analysis & Design (OOAD), Core Java Mastery, and Database Management Systems.</p>
+          <div class="mt-4 pt-3 border-t border-purple-900/50 flex items-center justify-between text-xs text-amber-200/80">
+            <span>Infosys Certified</span>
+            <span class="font-mono text-amber-400 font-bold">Verified</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 3: THE ROYAL QUESTS (FLAGSHIP PROJECTS) -->
+    <section id="quests" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3">
+          ⚔️ Chapter III • Masterpiece Inventions
+        </div>
+        <h2 class="font-cinzel font-black text-3xl sm:text-5xl text-slate-100">
+          The Three Crown Jewels of <span class="golden-shimmer-text">Engineering</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3">
+          Deep architectural implementations built to scale, protect, diagnose, and empower real human lives.
+        </p>
+      </div>
+
+      <div class="space-y-12">
+        
+        <!-- PROJECT 1: CareSyncAI (Prasunethon 2.0 Round 2 Flagship) -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-400/30 shadow-2xl relative overflow-hidden group">
+          <div class="absolute -right-10 -top-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+                  🏆 Prasunethon 2.0 Round 2
+                </span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-purple-900/60 text-purple-200 border border-purple-400/30">
+                  Multilingual Healthcare AI
+                </span>
+              </div>
+
+              <h3 class="font-cinzel font-black text-2xl sm:text-4xl text-slate-100 group-hover:text-amber-300 transition-colors">
+                CareSyncAI – Clinical Triage & Hospital Resource Orchestrator
+              </h3>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                A battle-tested emergency department orchestration engine built with <strong class="text-amber-300">Next.js 14, TypeScript, Tailwind CSS, Zod, and Vitest</strong>. 
+                Slashes clinical intake latency by <span class="text-amber-400 font-bold">95.3%</span> (from 45 minutes down to 2.1 minutes).
+              </p>
+
+              <!-- Architecture Highlights Checklist -->
+              <div class="space-y-2 pt-2">
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Multilingual Trilingual Engine:</strong> Fluid clinical triage in <em>English, Tamil, and Hindi</em> with explainable deterministic ESI 1–5 scoring.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Hybrid Reasoning with 3-Second Fallback:</strong> Optional LLM clinical justification bounded by strict deterministic rule engine guarantees.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Hospital Command Matrix:</strong> Live priority queue, 54-bed dynamic capacity allocator, and exportable CSV/JSON audit trails.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>35 Automated Tests:</strong> 100% passing test suite across Zod schema validation, triage calculations, and sliding-window rate limiting.</span>
+                </div>
+              </div>
+
+              <!-- Tech Pills -->
+              <div class="flex flex-wrap gap-2 pt-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Next.js 14</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">TypeScript</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Zod Validation</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Vitest</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">ESI 1-5 Engine</span>
+              </div>
+
+              <!-- Links Deck -->
+              <div class="flex items-center gap-4 pt-4">
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-300 hover:scale-105 transition-all shadow-lg flex items-center gap-2">
+                  <span>🚀</span> Live Demo
+                </a>
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl glass-card border border-amber-400/40 text-amber-200 hover:text-white text-xs font-bold hover:scale-105 transition-all flex items-center gap-2">
+                  <span>💻</span> GitHub Repository
+                </a>
+              </div>
+            </div>
+
+            <!-- Interactive Live Triage Simulator Widget -->
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-purple-950/80 border border-amber-400/30 shadow-xl">
+              <div class="flex items-center justify-between pb-3 border-b border-purple-800/60 mb-4">
+                <span class="font-cinzel text-xs font-bold text-amber-300 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  Interactive Triage Simulator
+                </span>
+                <span class="text-[10px] text-purple-300 uppercase">Live ESI Engine</span>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="text-xs text-slate-300 flex justify-between">
+                    <span>Patient Heart Rate (BPM):</span>
+                    <span id="triage-hr-val" class="text-amber-400 font-bold font-mono">115</span>
+                  </label>
+                  <input type="range" min="50" max="180" value="115" id="triage-hr" oninput="updateTriageSim()" class="w-full accent-amber-400 mt-1 cursor-pointer">
+                </div>
+
+                <div>
+                  <label class="text-xs text-slate-300 flex justify-between">
+                    <span>Oxygen Saturation (SpO2 %):</span>
+                    <span id="triage-o2-val" class="text-amber-400 font-bold font-mono">94%</span>
+                  </label>
+                  <input type="range" min="70" max="100" value="94" id="triage-o2" oninput="updateTriageSim()" class="w-full accent-amber-400 mt-1 cursor-pointer">
+                </div>
+
+                <!-- Live Calculated State -->
+                <div class="p-3.5 rounded-xl bg-purple-900/60 border border-amber-400/30">
+                  <div class="text-[11px] text-amber-200/80 uppercase tracking-wider">Computed Triage Result:</div>
+                  <div class="flex items-center justify-between mt-1">
+                    <span id="triage-status" class="text-sm font-bold text-amber-400 font-cinzel">ESI Level 2: Emergent Care</span>
+                    <span id="triage-beds" class="text-xs bg-purple-950 px-2 py-0.5 rounded text-slate-300">Bed 14/54 Assigned</span>
+                  </div>
+                  <div id="triage-advice" class="text-[11px] text-slate-400 mt-1">Immediate nursing intervention required. Trilingual notification triggered.</div>
+                </div>
+
+                <div class="text-[11px] text-center text-amber-300/80">
+                  ✨ Models real 45m → 2.1m intake pipeline optimization
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2: Personal Finance & Budget Management Application -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-400/30 shadow-2xl relative overflow-hidden group">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- Interactive Budget Calculator Visual -->
+            <div class="lg:col-span-5 order-2 lg:order-1 p-6 rounded-2xl bg-purple-950/80 border border-amber-400/30 shadow-xl">
+              <div class="flex items-center justify-between pb-3 border-b border-purple-800/60 mb-4">
+                <span class="font-cinzel text-xs font-bold text-amber-300 flex items-center gap-2">
+                  <span>💰</span> Royal Treasury SIP Forecaster
+                </span>
+                <span class="text-[10px] text-emerald-400">PostgreSQL + JWT</span>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="text-xs text-slate-300 flex justify-between">
+                    <span>Monthly Investment (₹):</span>
+                    <span id="sip-monthly-val" class="text-amber-400 font-bold font-mono">₹10,000</span>
+                  </label>
+                  <input type="range" min="1000" max="50000" step="1000" value="10000" id="sip-monthly" oninput="updateSipCalc()" class="w-full accent-amber-400 mt-1 cursor-pointer">
+                </div>
+
+                <div>
+                  <label class="text-xs text-slate-300 flex justify-between">
+                    <span>Expected Annual Return:</span>
+                    <span id="sip-rate-val" class="text-amber-400 font-bold font-mono">12%</span>
+                  </label>
+                  <input type="range" min="6" max="25" step="1" value="12" id="sip-rate" oninput="updateSipCalc()" class="w-full accent-amber-400 mt-1 cursor-pointer">
+                </div>
+
+                <div class="p-4 rounded-xl bg-purple-900/60 border border-amber-400/30">
+                  <div class="text-[11px] text-amber-200/80 uppercase tracking-wider">10-Year Wealth Projection:</div>
+                  <div class="text-2xl font-black text-amber-300 font-cinzel mt-1" id="sip-total">₹23,23,391</div>
+                  <div class="text-xs text-slate-300 flex justify-between mt-2 pt-2 border-t border-purple-800/60">
+                    <span>Invested: <strong id="sip-invested" class="text-slate-100">₹12,00,000</strong></span>
+                    <span>Wealth Gain: <strong id="sip-gains" class="text-emerald-400">₹11,23,391</strong></span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] text-purple-300">
+                  <span>🛡️ 5-Role Security Matrix</span>
+                  <span>🚨 80% & 100% Limit Alerts</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Details -->
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+                  Full-Stack Enterprise Stack
+                </span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-blue-900/60 text-blue-200 border border-blue-400/30">
+                  Java 17 + Spring Boot 3
+                </span>
+              </div>
+
+              <h3 class="font-cinzel font-black text-2xl sm:text-4xl text-slate-100 group-hover:text-amber-300 transition-colors">
+                Personal Finance & Budget Management Application
+              </h3>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                Enterprise wealth orchestration system containerized with Docker Compose. Engineered around strict 
+                <strong class="text-amber-300">Spring Security JWT authentication</strong> and fine-grained access policies across five discrete stakeholder personas.
+              </p>
+
+              <div class="space-y-2 pt-2">
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>5-Role Role-Based Access Control (RBAC):</strong> Discrete authorization barriers for <em>User, Family Member, Financial Advisor, Support, and Admin</em>.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Automated Transaction Categorization:</strong> Rule-based parsing across 9 financial silos with proactive threshold notifications at 80% and 100% of budget limits.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Interactive SIP Engine & Net-Worth Tracker:</strong> Real-time goal calculations and dynamic portfolio tracking powered by PostgreSQL and React 18.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Containerized CI/CD:</strong> Fully reproducible environment configured with multi-stage Docker builds and automated delivery pipelines.</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Java 17</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Spring Boot 3</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">JWT Security</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">React 18</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">PostgreSQL</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Docker Compose</span>
+              </div>
+
+              <div class="flex items-center gap-4 pt-4">
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-300 hover:scale-105 transition-all shadow-lg flex items-center gap-2">
+                  <span>🚀</span> Live Demo
+                </a>
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl glass-card border border-amber-400/40 text-amber-200 hover:text-white text-xs font-bold hover:scale-105 transition-all flex items-center gap-2">
+                  <span>💻</span> GitHub Repository
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PROJECT 3: AI Teacher – Multimodal Personalized Learning Platform -->
+        <div class="glass-card rounded-3xl p-6 sm:p-10 border border-amber-400/30 shadow-2xl relative overflow-hidden group">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-4">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+                  Adaptive AI Agents & RAG
+                </span>
+                <span class="px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-900/60 text-emerald-200 border border-emerald-400/30">
+                  Python + FastAPI + Next.js 14
+                </span>
+              </div>
+
+              <h3 class="font-cinzel font-black text-2xl sm:text-4xl text-slate-100 group-hover:text-amber-300 transition-colors">
+                AI Teacher – Multimodal Personalized Learning Platform
+              </h3>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                An intelligent educational synthesis engine that transmutes uploaded PDF, DOCX, and PPTX textbooks into dynamic interactive lessons with synchronous AI narration, in-lesson knowledge checks, and 7-day personalized revision architectures.
+              </p>
+
+              <div class="space-y-2 pt-2">
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Multi-Agent RAG Pipeline:</strong> Retrieval-Augmented Generation power for live question answering, conceptual misconception diagnosis, and diagnostic PDF reports.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Synchronous Visual & Audio Synthesis:</strong> Auto-generates slides, visual diagrams, and audio voiceover tailored to the learner's individual pace.</span>
+                </div>
+                <div class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-300">
+                  <span class="text-amber-400 font-bold">✓</span>
+                  <span><strong>Hardened API Security:</strong> Secured with PBKDF2 cryptographic password hashing, signed bearer tokens, and sliding-window rate limiting.</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2 pt-3">
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Python</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">FastAPI</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">Next.js 14</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">RAG Agent Pipeline</span>
+                <span class="px-2.5 py-1 rounded-lg text-xs font-mono bg-purple-950/80 text-amber-200 border border-purple-700/40">PBKDF2</span>
+              </div>
+
+              <div class="flex items-center gap-4 pt-4">
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-amber-400 text-purple-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-300 hover:scale-105 transition-all shadow-lg flex items-center gap-2">
+                  <span>🚀</span> Live Demo
+                </a>
+                <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl glass-card border border-amber-400/40 text-amber-200 hover:text-white text-xs font-bold hover:scale-105 transition-all flex items-center gap-2">
+                  <span>💻</span> GitHub Repository
+                </a>
+              </div>
+            </div>
+
+            <!-- Interactive AI Lesson Preview Card -->
+            <div class="lg:col-span-5 p-6 rounded-2xl bg-purple-950/80 border border-amber-400/30 shadow-xl">
+              <div class="flex items-center justify-between pb-3 border-b border-purple-800/60 mb-4">
+                <span class="font-cinzel text-xs font-bold text-amber-300 flex items-center gap-2">
+                  <span>🧙‍♂️</span> Lesson Synthesis Deck
+                </span>
+                <span class="text-[10px] text-amber-400">RAG Pipeline</span>
+              </div>
+
+              <div class="space-y-3">
+                <div class="p-3 rounded-xl bg-purple-900/50 border border-purple-700/50 text-xs">
+                  <div class="text-[10px] text-amber-300 font-bold uppercase">Topic: Binary Search Trees & AVL Rotations</div>
+                  <div class="text-slate-300 mt-1">"Synthesizing 14-page document into 4 key learning checkpoints with animated tree balancing..."</div>
+                </div>
+
+                <div class="p-3 rounded-xl bg-purple-900/50 border border-purple-700/50 text-xs">
+                  <div class="flex justify-between text-[11px] text-slate-300 mb-1">
+                    <span>Generated Quiz Question</span>
+                    <span class="text-emerald-400 font-bold">Live Check</span>
+                  </div>
+                  <div class="text-amber-200 font-medium">What is the worst-case lookup time in an unbalanced BST vs AVL Tree?</div>
+                  <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="p-2 text-left rounded bg-purple-950 hover:bg-amber-400/20 border border-purple-700 text-[10px] text-slate-200">A) O(1) vs O(N)</button>
+                    <button class="p-2 text-left rounded bg-emerald-950 border border-emerald-500 text-[10px] text-emerald-300 font-bold">B) O(N) vs O(log N) ✓</button>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-[11px] text-amber-300/80 pt-2 border-t border-purple-800/60">
+                  <span>📊 7-Day Spaced Repetition</span>
+                  <span>📄 Export PDF Report</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 4: THE ROYAL CHRONICLES (LEADERSHIP, INTERNSHIPS & HACKATHONS) -->
+    <section id="chronicles" class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3">
+          👑 Chapter IV • Royal Chronicles
+        </div>
+        <h2 class="font-cinzel font-black text-3xl sm:text-5xl text-slate-100">
+          Internships, Leadership & <span class="golden-shimmer-text">Hackathon Honors</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base mt-3">
+          The verified campaign trail of an ambitious technologist across open-source, industry, and high-stakes competitions.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Column 1: Internships & Industry Expeditions -->
+        <div class="space-y-6">
+          <h3 class="font-cinzel font-bold text-xl text-amber-300 flex items-center gap-2">
+            <span>🛡️</span> Professional Expeditions & Internships
+          </h3>
+
+          <!-- NPTEL Winter Internship at IITM -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-bold text-slate-100 text-base">NPTEL Winter Internship at IIT Madras</h4>
+                <div class="text-xs text-amber-300 font-medium">Applied AI & Academic Research</div>
+              </div>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded">Nov 2026 - Jan 2027</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">
+              Applied cutting-edge AI tools for deep technical research, intelligent automated summarisation, and rigorous academic writing synthesis.
+            </p>
+          </div>
+
+          <!-- Girl Script Summer of Code 2026 -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-bold text-slate-100 text-base">Girl Script Summer of Code 2026</h4>
+                <div class="text-xs text-amber-300 font-medium">Open Source Contributor • LLM Agents</div>
+              </div>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded">Apr 2026 - Jun 2026</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">
+              Architected and enhanced production-ready LLM-based autonomous agents: task automation, prompt engineering workflows, and robust API integrations.
+            </p>
+          </div>
+
+          <!-- Java Intern, Infosys Springboard -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-bold text-slate-100 text-base">Java Intern, Infosys Springboard</h4>
+                <div class="text-xs text-amber-300 font-medium">Full-Stack Enterprise Grievance System</div>
+              </div>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded">Nov 2025 - Jan 2026</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">
+              Engineered an end-to-end Student Grievance System utilizing Java and Spring Boot; designed and integrated high-throughput RESTful APIs with modern frontends.
+            </p>
+          </div>
+
+          <!-- Careernet Campus Ambassador -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-bold text-slate-100 text-base">Careernet Campus Ambassador</h4>
+                <div class="text-xs text-amber-300 font-medium">Student Leadership & Recruitment Drives</div>
+              </div>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded">Jan 2026 - Apr 2026</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">
+              Represented Careernet at SKCET campus; spearheaded inter-departmental career initiatives and coordinated high-impact recruitment and networking drives.
+            </p>
+          </div>
+
+          <!-- Infosys Springboard Pragati Path to Future 6.0 -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="flex justify-between items-start">
+              <div>
+                <h4 class="font-bold text-slate-100 text-base">Infosys Springboard Pragati Path 6.0</h4>
+                <div class="text-xs text-amber-300 font-medium">Cohort Scholar</div>
+              </div>
+              <span class="text-[11px] font-mono text-purple-300 bg-purple-900/60 px-2 py-0.5 rounded">Aug 2025 - Oct 2025</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2">
+              Selected into an elite professional cohort to hone industry-grade software engineering competencies, agile practices, and professional communication.
+            </p>
+          </div>
+        </div>
+
+        <!-- Column 2: Hackathon Conquests & Laurels -->
+        <div class="space-y-6">
+          <h3 class="font-cinzel font-bold text-xl text-amber-300 flex items-center gap-2">
+            <span>🏆</span> Hackathon Conquests & Laurels
+          </h3>
+
+          <!-- Rank 4 IIT Patna -->
+          <div class="glass-card rounded-2xl p-5 border-2 border-amber-400/40 shadow-xl hover:border-amber-400 transition-all relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400 to-yellow-500 text-purple-950 text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl font-cinzel">
+              National Top 4
+            </div>
+            <div class="text-amber-400 text-2xl mb-1">🏅</div>
+            <h4 class="font-cinzel font-black text-slate-100 text-lg">Rank 4 – IIT Patna Critical Mass AIbot Challenge</h4>
+            <div class="text-xs text-amber-300 font-semibold mt-1">National AI Autonomous Bot Building</div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+              Competed among premier institutes nationwide to design and deploy high-performance conversational AI bots capable of complex situational context handling and dynamic response trees.
+            </p>
+          </div>
+
+          <!-- SheCodeathon Finalist -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="text-amber-400 text-2xl mb-1">💫</div>
+            <h4 class="font-cinzel font-bold text-slate-100 text-base">SheCodeathon Finalist at SKCET</h4>
+            <div class="text-xs text-amber-300 font-semibold mt-1">All-Women Tech Innovation Hackathon</div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+              Selected as a top finalist for developing high-impact civic software solutions with rapid prototyping, sleek UI/UX, and robust API backends.
+            </p>
+          </div>
+
+          <!-- MSME Idea Hackathon 5.0 -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="text-amber-400 text-2xl mb-1">💡</div>
+            <h4 class="font-cinzel font-bold text-slate-100 text-base">MSME Idea Hackathon 5.0 – Department Finalist</h4>
+            <div class="text-xs text-amber-300 font-semibold mt-1">Ministry of Micro, Small & Medium Enterprises</div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+              Conceptualized and defended scalable technology architectures targeting business automation and operational optimization for Indian enterprises.
+            </p>
+          </div>
+
+          <!-- Prasunethon 2.0 Round 2 -->
+          <div class="glass-card rounded-2xl p-5 border border-amber-400/20 hover:border-amber-400/60 transition-all">
+            <div class="text-amber-400 text-2xl mb-1">🏥</div>
+            <h4 class="font-cinzel font-bold text-slate-100 text-base">Prasunethon 2.0 – Round 2 (CareSyncAI)</h4>
+            <div class="text-xs text-amber-300 font-semibold mt-1">HealthTech & Emergency Orchestration</div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+              Advanced to Round 2 with CareSyncAI, validating emergency clinical triage under rigorous judging matrices, multi-language validation, and unit test suites.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE FLOATING LANTERN SHRINE ("I SEE THE LIGHT") -->
+    <section id="lanterns" class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <div class="glass-card rounded-3xl p-8 sm:p-14 border border-amber-400/35 relative overflow-hidden shadow-2xl">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/35 text-amber-300 text-xs font-bold uppercase tracking-widest mb-4">
+          🏮 Chapter V • The Lantern Festival
+        </div>
+
+        <h2 class="font-cinzel-dec font-black text-3xl sm:text-5xl text-slate-100 mb-4">
+          "I See The Light" <span class="golden-shimmer-text">Lantern Shrine</span>
+        </h2>
+
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+          In Rapunzel's kingdom of Corona, thousands of glowing lanterns rise every year to celebrate hope, dreams, and reunion. 
+          Release your own glowing lantern into Keerthana's night sky with an encouraging wish or invitation!
+        </p>
+
+        <!-- Interactive Lantern Release Action -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+          <input type="text" id="lantern-input-name" placeholder="Your Name or Company..." class="w-full sm:w-2/3 px-4 py-3.5 rounded-xl bg-purple-950/80 border border-amber-400/40 text-slate-100 placeholder-purple-300/50 text-sm focus:outline-none focus:border-amber-400">
+          <button onclick="releaseCustomLantern()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-purple-950 font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/30 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap">
+            <span>✨ Release Lantern</span>
+          </button>
+        </div>
+
+        <!-- Recent Wishes Floating Ribbon -->
+        <div class="mt-10 pt-8 border-t border-purple-800/50">
+          <div class="text-xs font-cinzel uppercase tracking-widest text-amber-300/70 mb-4">Ascending Wishes in Flight:</div>
+          <div class="flex flex-wrap items-center justify-center gap-3" id="lantern-wishes-deck">
+            <span class="px-3.5 py-1.5 rounded-full glass-card border border-amber-400/30 text-xs text-amber-200">
+              🏮 <em>"Mass portfolio and ironclad Java foundations!"</em> — Recruiter
+            </span>
+            <span class="px-3.5 py-1.5 rounded-full glass-card border border-amber-400/30 text-xs text-amber-200">
+              🏮 <em>"Top 4 at IIT Patna is no joke. Superstar in the making!"</em> — Tech Lead
+            </span>
+            <span class="px-3.5 py-1.5 rounded-full glass-card border border-amber-400/30 text-xs text-amber-200">
+              🏮 <em>"CareSyncAI triage speeds are breathtaking."</em> — HealthTech Peer
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 6: THE ROYAL DISPATCH SCROLL (CONTACT & ACTION) -->
+    <section id="scroll" class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border-2 border-amber-400/40 shadow-2xl relative overflow-hidden">
+        
+        <!-- Wax Seal Embellishment -->
+        <div class="absolute top-6 right-6 w-14 h-14 rounded-full bg-gradient-to-br from-red-600 to-amber-900 border-2 border-amber-300 flex items-center justify-center shadow-lg transform rotate-12">
+          <span class="font-cinzel-dec font-bold text-xs text-amber-200">KR</span>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3">
+          📜 Chapter VI • The Royal Dispatch
+        </div>
+
+        <h2 class="font-cinzel font-black text-3xl sm:text-4xl text-slate-100 mb-3">
+          Summon Keerthana to Your <span class="golden-shimmer-text">Engineering Kingdom</span>
+        </h2>
+
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-2xl">
+          Whether you're searching for an extraordinary <strong class="text-amber-300">Software Engineering Intern</strong>, 
+          a full-stack collaborator, or want to discuss AI Agent architectures, the royal ravens are always ready.
+        </p>
+
+        <!-- Direct Contact Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          
+          <!-- Email with Instant Copy -->
+          <div class="p-4 rounded-2xl bg-purple-950/70 border border-amber-400/25 flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">✉️</span>
+              <div>
+                <div class="text-[11px] text-amber-300 uppercase tracking-wider font-semibold">Direct Royal Courier</div>
+                <div class="text-sm font-mono text-slate-100 font-medium">keerthana.r.mani@gmail.com</div>
+              </div>
+            </div>
+            <button onclick="copyToClipboard('keerthana.r.mani@gmail.com', 'email-copy-msg')" class="p-2 rounded-lg bg-amber-400/10 hover:bg-amber-400 text-amber-300 hover:text-purple-950 transition-all text-xs font-bold" title="Copy Email">
+              <span id="email-copy-msg">Copy</span>
+            </button>
+          </div>
+
+          <!-- Phone / WhatsApp -->
+          <div class="p-4 rounded-2xl bg-purple-950/70 border border-amber-400/25 flex items-center justify-between group">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">📞</span>
+              <div>
+                <div class="text-[11px] text-amber-300 uppercase tracking-wider font-semibold">Voice & WhatsApp</div>
+                <div class="text-sm font-mono text-slate-100 font-medium">+91 9384268403</div>
+              </div>
+            </div>
+            <a href="tel:9384268403" class="p-2 rounded-lg bg-amber-400/10 hover:bg-amber-400 text-amber-300 hover:text-purple-950 transition-all text-xs font-bold">
+              Call
+            </a>
+          </div>
+
+          <!-- Location -->
+          <div class="p-4 rounded-2xl bg-purple-950/70 border border-amber-400/25 flex items-center gap-3">
+            <span class="text-2xl">📍</span>
+            <div>
+              <div class="text-[11px] text-amber-300 uppercase tracking-wider font-semibold">Kingdom Coordinates</div>
+              <div class="text-sm text-slate-100 font-medium">Coimbatore, Tamil Nadu, India</div>
+            </div>
+          </div>
+
+          <!-- Availability -->
+          <div class="p-4 rounded-2xl bg-purple-950/70 border border-amber-400/25 flex items-center gap-3">
+            <span class="text-2xl">⚡</span>
+            <div>
+              <div class="text-[11px] text-amber-300 uppercase tracking-wider font-semibold">Current Mission Status</div>
+              <div class="text-sm text-emerald-400 font-bold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                Open for Summer Internships & Roles
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Social Portals Links -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-purple-800/60">
+          <div class="flex items-center gap-3">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" class="px-4 py-2 rounded-xl glass-card border border-amber-400/30 hover:border-amber-400 text-amber-200 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+            <!-- GitHub -->
+            <a href="https://github.com/keerthana-rajamani/rportfolio" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl glass-card border border-amber-400/30 hover:border-amber-400 text-amber-200 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub / rportfolio
+            </a>
+            <!-- LeetCode -->
+            <a href="https://leetcode.com" target="_blank" class="px-4 py-2 rounded-xl glass-card border border-amber-400/30 hover:border-amber-400 text-amber-200 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+              <svg class="w-4 h-4 fill-current text-amber-400" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .666-1.794l3.774-4.04 5.306-5.688c.545-.545.545-1.43 0-1.975A1.374 1.374 0 0 0 13.483 0zm-2.88 7.283a1.39 1.39 0 0 0-1.214.718l-1.91 3.32a1.388 1.388 0 0 0 .507 1.895 1.388 1.388 0 0 0 1.895-.507l1.91-3.32a1.39 1.39 0 0 0-.507-1.895 1.38 1.38 0 0 0-.681-.211z"/></svg>
+              LeetCode
+            </a>
+          </div>
+
+          <a href="mailto:keerthana.r.mani@gmail.com?subject=Opportunity%20Discussion%20-%20Keerthana%20R" class="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-purple-950 font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all">
+            Send Imperial Dispatch
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER WITH CORONA KINGDOM HERALDRY -->
+    <footer class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 text-center border-t border-purple-900/60">
+      <div class="flex flex-col items-center justify-center gap-3">
+        <div class="flex items-center gap-2">
+          <span class="text-amber-400">☀️</span>
+          <span class="font-cinzel-dec font-bold text-sm golden-shimmer-text">KEERTHANA R</span>
+          <span class="text-amber-400">☀️</span>
+        </div>
+        <p class="text-xs text-slate-400 max-w-md">
+          Crafted with pure fairy tale enchantment, Rapunzel inspiration, and ruthless full-stack engineering excellence.
+        </p>
+        <p class="text-[11px] text-amber-300/60 font-cinzel tracking-wider">
+          Sri Krishna College of Engineering and Technology (SKCET) • Class of 2028
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Modal for Custom Lantern Release -->
+  <div id="lantern-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-purple-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+    <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 border-2 border-amber-400/50 shadow-2xl relative text-center">
+      <button onclick="closeLanternModal()" class="absolute top-4 right-4 text-purple-300 hover:text-amber-300 text-lg">✕</button>
+      
+      <div class="w-16 h-16 mx-auto mb-4 animate-float">
+        <svg class="w-16 h-16 text-amber-400 glow-lantern" viewBox="0 0 64 80" fill="currentColor">
+          <path d="M16 12 Q32 4 48 12 L54 60 Q32 72 10 60 Z" fill="#f59e0b"/>
+          <path d="M20 16 Q32 10 44 16 L48 56 Q32 66 16 56 Z" fill="#fef08a"/>
+          <circle cx="32" cy="36" r="10" fill="#fff"/>
+        </svg>
+      </div>
+
+      <h3 class="font-cinzel font-black text-2xl text-slate-100 mb-2">Release A Wish Lantern</h3>
+      <p class="text-xs text-slate-300 mb-6">Your lantern will illuminate the night sky with radiant golden stardust.</p>
+
+      <div class="space-y-4 text-left">
+        <div>
+          <label class="text-xs font-semibold text-amber-300 uppercase tracking-wider">Your Name / Title</label>
+          <input type="text" id="modal-name" placeholder="e.g. Priya S., Engineering Manager" class="w-full mt-1 px-4 py-2.5 rounded-xl bg-purple-900/60 border border-amber-400/30 text-slate-100 text-xs focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-amber-300 uppercase tracking-wider">Message or Imperial Praise</label>
+          <textarea id="modal-msg" rows="3" placeholder="e.g. Keerthana, your CareSyncAI and Spring Boot architecture is stellar! Let's connect." class="w-full mt-1 px-4 py-2.5 rounded-xl bg-purple-900/60 border border-amber-400/30 text-slate-100 text-xs focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+        <button onclick="submitModalLantern()" class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-purple-950 font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-[1.02] transition-all">
+          🏮 Light & Release To The Stars
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: Starfield & Floating Lanterns Simulation + Audio Synth + Interactive Features -->
+  <script>
+    /* ============================================================
+       1. STARFIELD & FLOATING LANTERNS CANVAS
+       ============================================================ */
+    const canvas = document.getElementById('sky-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Star particles
+    const stars = [];
+    const numStars = 120;
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random() * 0.8 + 0.2,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        twinkleDir: Math.random() > 0.5 ? 1 : -1
+      });
+    }
+
+    // Floating Lanterns
+    const lanterns = [];
+    const maxLanterns = 24;
+
+    class Lantern {
+      constructor(customX, customY, customLabel) {
+        this.x = customX || Math.random() * width;
+        this.y = customY || height + Math.random() * 100;
+        this.size = Math.random() * 14 + 18; // 18 - 32px
+        this.speedY = Math.random() * 0.45 + 0.25;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.swayAngle = Math.random() * Math.PI * 2;
+        this.swaySpeed = Math.random() * 0.02 + 0.01;
+        this.label = customLabel || null;
+        this.hue = 42 + (Math.random() * 8 - 4); // warm golden amber
+      }
+
+      update() {
+        this.y -= this.speedY;
+        this.swayAngle += this.swaySpeed;
+        this.x += Math.sin(this.swayAngle) * 0.35 + this.speedX;
+
+        // Reset if floats off top
+        if (this.y < -60) {
+          this.y = height + 40;
+          this.x = Math.random() * width;
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+
+        // Radiant Outer Glow
+        const glowGrad = ctx.createRadialGradient(0, 0, this.size * 0.2, 0, 0, this.size * 1.8);
+        glowGrad.addColorStop(0, `hsla(${this.hue}, 100%, 65%, 0.45)`);
+        glowGrad.addColorStop(0.5, `hsla(${this.hue}, 90%, 55%, 0.15)`);
+        glowGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = glowGrad;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Lantern Body
+        ctx.fillStyle = `hsl(${this.hue}, 95%, 60%)`;
+        ctx.beginPath();
+        const w = this.size * 0.8;
+        const h = this.size * 1.1;
+        ctx.roundRect(-w / 2, -h / 2, w, h, 6);
+        ctx.fill();
+
+        // Inner glowing core
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(0, 0, this.size * 0.3, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Top & Bottom wooden rings
+        ctx.fillStyle = '#78350f';
+        ctx.fillRect(-w / 2 - 1, -h / 2, w + 2, 2.5);
+        ctx.fillRect(-w / 2 - 1, h / 2 - 2.5, w + 2, 2.5);
+
+        // Label if present
+        if (this.label) {
+          ctx.fillStyle = '#fbbf24';
+          ctx.font = '10px "Plus Jakarta Sans", sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(this.label, 0, -h / 2 - 6);
+        }
+
+        ctx.restore();
+      }
+    }
+
+    // Seed initial lanterns
+    for (let i = 0; i < maxLanterns; i++) {
+      lanterns.push(new Lantern(Math.random() * width, Math.random() * height));
+    }
+
+    function animateSky() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Stars
+      for (const s of stars) {
+        s.alpha += s.twinkleSpeed * s.twinkleDir;
+        if (s.alpha > 0.95) { s.alpha = 0.95; s.twinkleDir = -1; }
+        if (s.alpha < 0.15) { s.alpha = 0.15; s.twinkleDir = 1; }
+        ctx.fillStyle = `rgba(255, 235, 200, ${s.alpha})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Lanterns
+      for (const l of lanterns) {
+        l.update();
+        l.draw();
+      }
+
+      requestAnimationFrame(animateSky);
+    }
+    animateSky();
+
+    /* ============================================================
+       2. WEB AUDIO API SYNTHESIZER (MAGICAL HARP & CHIMES)
+       100% self-contained, no external mp3 or CSP violations!
+       ============================================================ */
+    let audioCtx = null;
+    let isPlayingAmbience = false;
+    let ambienceInterval = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    // Play a crystal fairy harp chime note
+    function playChime(freq, timeOffset = 0, duration = 1.2, gainVol = 0.12) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime + timeOffset);
+
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime + timeOffset);
+      gain.gain.exponentialRampToValueAtTime(gainVol, audioCtx.currentTime + timeOffset + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + timeOffset + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(audioCtx.currentTime + timeOffset);
+      osc.stop(audioCtx.currentTime + timeOffset + duration);
+    }
+
+    // Rapunzel Frying Pan Metallic "CLANG" Synth!
+    function playPanClang() {
+      initAudio();
+      if (!audioCtx) return;
+
+      const freqs = [320, 680, 1100, 2400];
+      freqs.forEach(f => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(f, audioCtx.currentTime);
+
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.8);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+      });
+    }
+
+    // Play fairy tale chord arpeggio
+    function playMagicalArpeggio() {
+      const pentatonic = [523.25, 659.25, 783.99, 987.77, 1046.50, 1318.51]; // C Major / Pentatonic magic
+      pentatonic.forEach((note, index) => {
+        playChime(note, index * 0.12, 1.4, 0.08);
+      });
+    }
+
+    // Audio Toggle Handler
+    const audioBtn = document.getElementById('audio-toggle-btn');
+    const audioLabel = document.getElementById('audio-label');
+    const audioIcon = document.getElementById('audio-icon');
+
+    audioBtn.addEventListener('click', () => {
+      initAudio();
+      if (!isPlayingAmbience) {
+        isPlayingAmbience = true;
+        audioLabel.textContent = 'Pause Magic';
+        audioIcon.textContent = '✨';
+        playMagicalArpeggio();
+
+        ambienceInterval = setInterval(() => {
+          const notes = [440, 523.25, 659.25, 783.99, 880, 1046.5];
+          const randomNote = notes[Math.floor(Math.random() * notes.length)];
+          playChime(randomNote, 0, 2.0, 0.05);
+        }, 1800);
+      } else {
+        isPlayingAmbience = false;
+        clearInterval(ambienceInterval);
+        audioLabel.textContent = 'Play Magic Harp';
+        audioIcon.textContent = '🎵';
+      }
+    });
+
+    // Frying Pan Button Easter Egg
+    const panBtn = document.getElementById('pan-btn');
+    panBtn.addEventListener('click', () => {
+      playPanClang();
+      // Shake effect & popup message
+      panBtn.classList.add('scale-125', 'bg-amber-400', 'text-purple-950');
+      setTimeout(() => {
+        panBtn.classList.remove('scale-125', 'bg-amber-400', 'text-purple-950');
+      }, 400);
+
+      // Flash toast
+      showToast("🍳 CLANG! Rapunzel's Pan: +100 Bug Resistance Activated!");
+    });
+
+    /* ============================================================
+       3. PASCAL'S MOOD PALETTE SWITCHER
+       ============================================================ */
+    const pascalWidget = document.getElementById('pascal-widget');
+    const pascalText = document.getElementById('pascal-mood-text');
+    const moods = [
+      { name: 'Sundrop', color: '#ffd13b' },
+      { name: 'Corona Lavender', color: '#c084fc' },
+      { name: 'Emerald Forest', color: '#34d399' },
+      { name: 'Crimson Rose', color: '#fb7185' }
+    ];
+    let currentMoodIdx = 0;
+
+    pascalWidget.addEventListener('click', () => {
+      initAudio();
+      playChime(880, 0, 0.6, 0.1);
+      currentMoodIdx = (currentMoodIdx + 1) % moods.length;
+      const mood = moods[currentMoodIdx];
+      pascalText.textContent = mood.name;
+      pascalText.style.color = mood.color;
+      showToast(`🦎 Pascal shifted aura to: ${mood.name}!`);
+    });
+
+    /* ============================================================
+       4. INTERACTIVE TOAST NOTIFICATIONS
+       ============================================================ */
+    function showToast(message) {
+      const existing = document.getElementById('custom-toast');
+      if (existing) existing.remove();
+
+      const toast = document.createElement('div');
+      toast.id = 'custom-toast';
+      toast.className = 'fixed top-20 right-6 z-50 px-5 py-3 rounded-2xl glass-card border border-amber-400 text-amber-200 text-xs font-bold shadow-2xl flex items-center gap-2 transform translate-y-4 opacity-0 transition-all duration-300';
+      toast.innerHTML = message;
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    /* ============================================================
+       5. SKILL FILTERING LOGIC
+       ============================================================ */
+    function filterSkills(category) {
+      initAudio();
+      playChime(659.25, 0, 0.4, 0.08);
+
+      const tabs = document.querySelectorAll('.skill-tab');
+      tabs.forEach(t => {
+        t.classList.remove('bg-amber-400', 'text-purple-950');
+        t.classList.add('glass-card', 'text-purple-200');
+      });
+      event.target.classList.remove('glass-card', 'text-purple-200');
+      event.target.classList.add('bg-amber-400', 'text-purple-950');
+
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    /* ============================================================
+       6. INTERACTIVE TRIAGE SIMULATOR (CareSyncAI Project)
+       ============================================================ */
+    function updateTriageSim() {
+      const hr = parseInt(document.getElementById('triage-hr').value);
+      const o2 = parseInt(document.getElementById('triage-o2').value);
+
+      document.getElementById('triage-hr-val').textContent = hr;
+      document.getElementById('triage-o2-val').textContent = o2 + '%';
+
+      const statusEl = document.getElementById('triage-status');
+      const bedsEl = document.getElementById('triage-beds');
+      const adviceEl = document.getElementById('triage-advice');
+
+      if (o2 < 90 || hr > 140) {
+        statusEl.textContent = 'ESI Level 1: Resuscitation';
+        statusEl.className = 'text-sm font-bold text-red-400 font-cinzel';
+        bedsEl.textContent = 'Trauma Bay 1 Assigned';
+        adviceEl.textContent = 'Critical airway/hemodynamic alert. Full team summoned in 3 seconds.';
+      } else if (o2 < 95 || hr > 110) {
+        statusEl.textContent = 'ESI Level 2: Emergent Care';
+        statusEl.className = 'text-sm font-bold text-amber-400 font-cinzel';
+        bedsEl.textContent = 'Bed 14/54 Assigned';
+        adviceEl.textContent = 'Immediate nursing intervention required. Trilingual notification triggered.';
+      } else {
+        statusEl.textContent = 'ESI Level 3: Urgent Care';
+        statusEl.className = 'text-sm font-bold text-emerald-400 font-cinzel';
+        bedsEl.textContent = 'Bed 32/54 Assigned';
+        adviceEl.textContent = 'Vital signs stable. Two or more diagnostic resources projected.';
+      }
+    }
+
+    /* ============================================================
+       7. INTERACTIVE SIP CALCULATOR (Personal Finance Project)
+       ============================================================ */
+    function updateSipCalc() {
+      const p = parseFloat(document.getElementById('sip-monthly').value);
+      const r = parseFloat(document.getElementById('sip-rate').value) / 100 / 12;
+      const n = 120; // 10 years
+
+      document.getElementById('sip-monthly-val').textContent = '₹' + p.toLocaleString('en-IN');
+      document.getElementById('sip-rate-val').textContent = (r * 12 * 100).toFixed(0) + '%';
+
+      // Future Value formula: FV = P * [ (1+r)^n - 1 ] * (1+r) / r
+      const total = p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      const invested = p * n;
+      const gains = total - invested;
+
+      document.getElementById('sip-total').textContent = '₹' + Math.round(total).toLocaleString('en-IN');
+      document.getElementById('sip-invested').textContent = '₹' + Math.round(invested).toLocaleString('en-IN');
+      document.getElementById('sip-gains').textContent = '₹' + Math.round(gains).toLocaleString('en-IN');
+    }
+
+    /* ============================================================
+       8. CUSTOM LANTERN RELEASE LOGIC
+       ============================================================ */
+    function releaseCustomLantern() {
+      const input = document.getElementById('lantern-input-name');
+      const val = input.value.trim() || 'Distinguished Guest';
+
+      initAudio();
+      playMagicalArpeggio();
+
+      // Spawn lantern at bottom
+      lanterns.push(new Lantern(width / 2 + (Math.random() - 0.5) * 200, height + 20, val));
+
+      // Append to deck
+      const deck = document.getElementById('lantern-wishes-deck');
+      const badge = document.createElement('span');
+      badge.className = 'px-3.5 py-1.5 rounded-full glass-card border border-amber-400 text-xs text-amber-200 animate-pulse';
+      badge.innerHTML = `🏮 <em>"May your code shine forever bright!"</em> — ${val}`;
+      deck.prepend(badge);
+
+      showToast(`🏮 Lantern released for ${val}! Ascending to the stars...`);
+      input.value = '';
+    }
+
+    // Modal Handlers
+    function openLanternModal() {
+      const modal = document.getElementById('lantern-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+    function closeLanternModal() {
+      const modal = document.getElementById('lantern-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 300);
+    }
+    function submitModalLantern() {
+      const name = document.getElementById('modal-name').value.trim() || 'Royal Supporter';
+      const msg = document.getElementById('modal-msg').value.trim() || 'Greetings Keerthana!';
+
+      initAudio();
+      playMagicalArpeggio();
+
+      lanterns.push(new Lantern(width / 2, height + 10, name));
+
+      const deck = document.getElementById('lantern-wishes-deck');
+      const badge = document.createElement('span');
+      badge.className = 'px-3.5 py-1.5 rounded-full glass-card border border-amber-400 text-xs text-amber-200';
+      badge.innerHTML = `🏮 <em>"${msg}"</em> — ${name}`;
+      deck.prepend(badge);
+
+      closeLanternModal();
+      showToast(`✨ Imperial Lantern ascending with your blessing, ${name}!`);
+    }
+
+    /* ============================================================
+       9. CLIPBOARD HELPER
+       ============================================================ */
+    function copyToClipboard(text, elementId) {
+      navigator.clipboard.writeText(text).then(() => {
+        initAudio();
+        playChime(1046.50, 0, 0.5, 0.1);
+        const el = document.getElementById(elementId);
+        const orig = el.textContent;
+        el.textContent = 'Copied! ✓';
+        showToast('📋 Royal address copied to parchment clipboard!');
+        setTimeout(() => el.textContent = orig, 2500);
+      });
+    }
+
+    // Navbar Scroll Shadow
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('py-1');
+      } else {
+        nav.classList.remove('py-1');
+      }
+    });
+  </script>
+</body>
+</html>
